@@ -3,7 +3,7 @@ name: CI
 on: [push]
 
 jobs:
- sast_scan:
+ sast_scan: 
    name: Run Bandit Scan
    runs-on: ubuntu-latest
 
