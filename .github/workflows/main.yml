@@ -38,7 +38,7 @@ jobs:
      uses: actions/checkout@v7.0.1
 
    - name: Set up Docker
-     uses: docker-practice/actions-setup-docker@v1
+     uses: docker/setup-docker-action@v5.3.0
     
    - name: Build Docker Image
      run: docker build -f Dockerfile -t myapp:latest .
@@ -51,7 +51,7 @@ jobs:
        # docker scout quickview
        # docker scout cves
 
-   - name: Docker Scout Scan2 
+   - name: Docker Scout Scan2
      uses: docker/scout-action@v1.0.9
      with:
        dockerhub-user: ${{ secrets.REPO_USER }}
