@@ -2,6 +2,10 @@ name: CI
 
 on: [push]
 
+env:
+ USER: ${{ secrets.REPO_USER }}
+ PWD: ${{ secrets.REPO_PWD }}
+
 jobs:
  sast_scan: 
    name: Run Bandit Scan
@@ -50,6 +54,12 @@ jobs:
        # echo ${{ secrets.REPO_PWD }} | docker login -u ${{ secrets.REPO_USER }} --password-stdin
        # docker scout quickview
        # docker scout cves
+
+
+
+   - name: print variables
+     run: echo "${{ env.USER }}"
+     run: echo "${{ env.PWD }}"
 
    - name: Docker Scout Scan2
      uses: docker/scout-action@v1.0.9
