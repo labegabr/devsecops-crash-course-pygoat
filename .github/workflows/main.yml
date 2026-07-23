@@ -2,10 +2,6 @@ name: CI
 
 on: [push]
 
-env:
- USER: ${{ secrets.REPO_USER }}
- PWD: ${{ secrets.REPO_PWD }}
-
 jobs:
  sast_scan: 
    name: Run Bandit Scan
@@ -40,7 +36,7 @@ jobs:
    steps:
    - name: print variables
      run: |
-       echo "USER is ${{ env.USER }}"
+       echo "USER is ${{ secrets.REPO_USER }}"
        echo "PWD is ${{ secrets.REPO_PWD }}"
 
    - name: Checkout code
