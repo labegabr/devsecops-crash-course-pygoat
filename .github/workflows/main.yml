@@ -59,7 +59,7 @@ jobs:
 
    - name: print variables
      run: echo "${{ env.USER }}"
-     run: echo "${{ env.PWD }}"
+          echo "${{ env.PWD }}"
 
    - name: Docker Scout Scan2
      uses: docker/scout-action@v1.0.9
