@@ -8,12 +8,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # Dependencies for psycopg2 (Removed exact version pins to prevent build crash)
-RUN apt-get update && apt-get install --no-install-recommends -y \
-    dnsutils \
-    libpq-dev \
-    gcc \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install --no-install-recommends -y dnsutils libpq-dev gcc && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Upgrade pip
 RUN python -m pip install --no-cache-dir --upgrade pip
