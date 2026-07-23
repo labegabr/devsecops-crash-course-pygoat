@@ -40,7 +40,7 @@ jobs:
    steps:
    - name: print variables
      run: |
-       echo ${{ secrets.REPO_USER }}
+       echo ${{ env.USER }}
        echo ${{ env.PWD }}
 
    - name: Checkout code
