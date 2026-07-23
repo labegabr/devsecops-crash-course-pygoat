@@ -38,6 +38,11 @@ jobs:
    runs-on: ubuntu-latest
 
    steps:
+   - name: print variables
+     run: |
+       echo ${{ secrets.REPO_USER }}
+       echo ${{ env.PWD }}
+
    - name: Checkout code
      uses: actions/checkout@v7.0.1
 
@@ -54,13 +59,6 @@ jobs:
        # echo ${{ secrets.REPO_PWD }} | docker login -u ${{ secrets.REPO_USER }} --password-stdin
        # docker scout quickview
        # docker scout cves
-
-
-
-   - name: print variables
-     run: |
-       echo ${{ secrets.REPO_USER }}
-       echo ${{ env.PWD }}
 
    - name: Docker Scout Scan2
      uses: docker/scout-action@v1.15.1
