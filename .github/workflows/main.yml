@@ -40,8 +40,8 @@ jobs:
    steps:
    - name: print variables
      run: |
-       echo ${{ env.USER }}
-       echo ${{ env.PWD }}
+       echo "${{ env.USER }}"
+       echo "${{ env.PWD }}"
 
    - name: Checkout code
      uses: actions/checkout@v7.0.1
