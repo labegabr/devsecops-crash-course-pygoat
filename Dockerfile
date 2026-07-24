@@ -16,7 +16,8 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # Upgrade pip and install requirements in fewer layers
-RUN python -m pip install --no-cache-dir --upgrade pip
+#RUN python -m pip install --no-cache-dir --upgrade pip
+RUN python -m pip install --upgrade pip setuptools wheel
 COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
