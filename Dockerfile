@@ -17,13 +17,15 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 
 # Upgrade pip and install requirements in fewer layers
 RUN python -m pip install --no-cache-dir --upgrade pip
-COPY requirements.txt .
+COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy project files
-COPY . .
+COPY . /app/
 
 EXPOSE 8000
 
 # Start server directly (Run migrations externally)
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "3", "pygoat.wsgi"]
+RUN python3 /app/manage.py migrate
+WORKDIR /app/pygoat/
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers","6", "pygoat.wsgi"]
