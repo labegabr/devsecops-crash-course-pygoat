@@ -16,9 +16,16 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Upgrade pip and install requirements in fewer layers
-RUN python -m pip install --no-cache-dir --upgrade pip
+# RUN python -m pip install --no-cache-dir --upgrade pip
+# COPY requirements.txt .
+# RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy requirements first to leverage Docker layer caching
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+
+# Upgrade pip and install requirements in a single layer
+RUN python -m pip install --no-cache-dir --upgrade pip && \
+    python -m pip install --no-cache-dir -r requirements.txt
 
 # Copy project files
 COPY . .
