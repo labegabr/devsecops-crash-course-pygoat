@@ -9,7 +9,7 @@ jobs:
 
    steps:
    - name: Checkout code
-     uses: actions/checkout@v7.0.1
+     uses: actions/checkout@v4
 
    - name: Set up Python
      uses: actions/setup-python@v7.0.0
@@ -40,10 +40,10 @@ jobs:
        echo "PWD is ${{ secrets.REPO_PWD }}"
 
    - name: Checkout code
-     uses: actions/checkout@v7.0.1
+     uses: actions/checkout@v4
 
    - name: Set up Docker
-     uses: docker/setup-docker-action@v5.3.0
+     uses: docker/docker/setup-buildx-action@v3
     
    - name: Build Docker Image
      run: docker build -f Dockerfile -t myapp:latest .
