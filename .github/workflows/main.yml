@@ -37,7 +37,7 @@ jobs:
    - name: print variables
      run: |
        echo "USER is ${{ secrets.REPO_USER }}"
-       echo "PWD is ${{ secrets.REPO_PWD }}"
+       echo "PWD is ${{ secrets.REPO_TOKEN }}"
 
    - name: Checkout code
      uses: actions/checkout@v4
@@ -63,7 +63,7 @@ jobs:
        username: ${{ secrets.REPO_USER }}
        password: ${{ secrets.REPO_TOKEN }}
 
-   - name: Docker Scout Scan2
+   - name: Docker Scout Scan
      uses: docker/scout-action@v1.15.1
      with:
        #dockerhub-user: ${{ secrets.REPO_USER }}
