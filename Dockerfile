@@ -4,7 +4,8 @@ FROM python:3.11-slim-bookworm
 WORKDIR /app
 
 # Install system dependencies (Debian Bookworm uses updated packages)
-RUN apt-get update && apt-get install --no-install-recommends -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
     dnsutils \
     libpq-dev \
     gcc \
