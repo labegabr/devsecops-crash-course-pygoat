@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 
 # Upgrade pip and install requirements in fewer layers
 #RUN python -m pip install --no-cache-dir --upgrade pip
-RUN python -m pip install --no-cache-dir pip=22.0.4
+RUN python -m pip install --no-cache-dir pip==22.0.4
 COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
